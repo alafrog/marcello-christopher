@@ -7,12 +7,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- Color Palette & Base Styles --- */
+        /* --- Botanical Color Palette & Base Styles --- */
         :root {
-            --primary-color: #1a2a3a; /* Navy Blue */
-            --accent-color: #d4af37; /* Gold */
-            --bg-color: #fcfcfc;
-            --text-color: #333333;
+            --primary-color: #314438; /* Deep Eucalyptus Green */
+            --accent-color: #8fa393; /* Soft Rosemary/Sage Green */
+            --bg-color: #fdfdfc; /* Warm off-white */
+            --section-bg: #eef1ef; /* Very pale sage for contrast sections */
+            --text-color: #3e443f; /* Soft dark grey-green for readable text */
         }
 
         * {
@@ -49,9 +50,9 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(253, 253, 252, 0.95);
             padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 15px rgba(49, 68, 56, 0.08);
             z-index: 1000;
         }
 
@@ -67,6 +68,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             font-size: 0.85rem;
+            color: var(--primary-color);
         }
 
         /* --- Hero Section --- */
@@ -80,30 +82,31 @@
             color: white;
             text-align: center;
             padding: 2rem;
-            /* To add a background image, uncomment the line below and add your image URL */
-            /* background-image: linear-gradient(rgba(26, 42, 58, 0.7), rgba(26, 42, 58, 0.7)), url('your-image.jpg'); */
+            /* Botanical background image with a soft green/grey overlay */
+            background-image: linear-gradient(rgba(49, 68, 56, 0.75), rgba(49, 68, 56, 0.6)), url('https://images.unsplash.com/photo-1615309852233-0b1a0300cc9e?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
         }
 
         .hero h1 {
             color: white;
-            font-size: 4rem;
-            margin-bottom: 1rem;
+            font-size: 4.5rem;
+            margin-bottom: 0.5rem;
             font-style: italic;
+            font-weight: 400;
         }
 
         .hero p {
             font-size: 1.2rem;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             text-transform: uppercase;
             margin-bottom: 2rem;
-            color: var(--accent-color);
+            color: #d6ded7; /* Very pale green text */
         }
 
         /* --- Content Sections --- */
         section {
-            padding: 5rem 2rem;
+            padding: 6rem 2rem;
             max-width: 900px;
             margin: 0 auto;
         }
@@ -121,7 +124,7 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
+            width: 50px;
             height: 2px;
             background-color: var(--accent-color);
         }
@@ -133,23 +136,36 @@
         /* --- Details Grid --- */
         .details-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
             margin-top: 3rem;
         }
 
         .detail-card {
-            background: white;
-            padding: 2rem;
+            background: var(--bg-color);
+            padding: 2.5rem 2rem;
             text-align: center;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--primary-color);
+            border: 1px solid var(--accent-color);
+            border-radius: 4px;
+            position: relative;
+        }
+
+        /* Adding a subtle inner border for a stationery feel */
+        .detail-card::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid rgba(143, 163, 147, 0.3);
+            pointer-events: none;
         }
 
         .detail-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 1rem;
+            color: var(--primary-color);
         }
 
         /* --- RSVP Button --- */
@@ -158,18 +174,20 @@
             background-color: var(--primary-color);
             color: white;
             padding: 1rem 3rem;
-            border: 2px solid var(--primary-color);
-            font-size: 1rem;
+            border: 1px solid var(--primary-color);
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-top: 2rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            border-radius: 2px;
         }
 
         .btn:hover {
-            background-color: transparent;
-            color: var(--primary-color);
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
         }
 
         /* --- Footer --- */
@@ -177,16 +195,21 @@
             background-color: var(--primary-color);
             color: white;
             text-align: center;
-            padding: 2rem;
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
+            padding: 3rem 2rem;
+        }
+
+        footer h2 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.8rem; }
+            .hero h1 { font-size: 3rem; }
             nav ul { gap: 1rem; }
             nav a { font-size: 0.75rem; }
+            section { padding: 4rem 1.5rem; }
         }
     </style>
 </head>
@@ -204,7 +227,7 @@
     <section id="home" class="hero">
         <h1>Alex & David</h1>
         <p>Are getting married</p>
-        <p style="color: white; font-family: 'Playfair Display', serif; font-size: 1.5rem; text-transform: none; letter-spacing: 1px;">
+        <p style="color: white; font-family: 'Playfair Display', serif; font-size: 1.4rem; text-transform: none; letter-spacing: 1px;">
             October 14, 2026 • Paris, France
         </p>
     </section>
@@ -216,7 +239,7 @@
         <p>Thank you for being part of our journey. We are so excited to share our special day with you!</p>
     </section>
 
-    <section id="details" style="background-color: #f4f6f8; max-width: 100%; padding-bottom: 5rem;">
+    <section id="details" style="background-color: var(--section-bg); max-width: 100%; padding-bottom: 6rem;">
         <div style="max-width: 900px; margin: 0 auto;">
             <h2 class="section-title">When & Where</h2>
             
@@ -226,7 +249,7 @@
                     <p><strong>Saturday, October 14, 2026</strong></p>
                     <p>4:00 PM</p>
                     <br>
-                    <p><strong>The Botanical Gardens</strong></p>
+                    <p><strong>The Conservatory</strong></p>
                     <p>123 Garden Avenue</p>
                     <p>Paris, France</p>
                 </div>
@@ -236,7 +259,7 @@
                     <p><strong>Dinner & Dancing to follow</strong></p>
                     <p>6:00 PM - Midnight</p>
                     <br>
-                    <p><strong>The Grand Hall</strong></p>
+                    <p><strong>The Greenhouse</strong></p>
                     <p>456 Celebration Street</p>
                     <p>Paris, France</p>
                 </div>
@@ -254,4 +277,17 @@
         <div style="margin-top: 4rem;">
             <h3>Registry</h3>
             <p style="margin-top: 1rem;">Your presence is the greatest gift of all. If you wish to bless us with a gift, we are registered at:</p>
-            <p style="
+            <p style="margin-top: 1rem;">
+                <a href="#" style="font-weight: bold; text-decoration: underline; color: var(--accent-color);">Crate & Barrel</a> &nbsp;|&nbsp; 
+                <a href="#" style="font-weight: bold; text-decoration: underline; color: var(--accent-color);">Our Honeymoon Fund</a>
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <h2 style="font-style: italic;">Alex & David</h2>
+        <p style="margin-top: 0.5rem; color: #a9b8ae; font-family: 'Lato', sans-serif; font-size: 0.9rem;">We can't wait to celebrate with you.</p>
+    </footer>
+
+</body>
+</html>
